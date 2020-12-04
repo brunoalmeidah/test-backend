@@ -1,5 +1,6 @@
 import ValidationError from '@errors/ValidationError';
 import IData from '@interfaces/data';
+import { isExists } from 'date-fns';
 
 class ValidateModelTwoService {
   public execute(digitableLine: string): IData {
@@ -22,10 +23,14 @@ class ValidateModelTwoService {
       amount = Number(barCode.substr(4, 11));
     }
 
-    const expirationDate = `${barCode.substr(19, 4)}-${barCode.substr(
-      23,
-      2,
-    )}-${barCode.substr(25, 2)}`;
+    const year = barCode.substr(19, 4);
+    const month = barCode.substr(23, 2);
+    const day = barCode.substr(25, 2);
+
+    let expirationDate = '';
+    if (isExists(Number(year), Number(month), Number(day))) {
+      expirationDate = `${year}-${month}-${day}`;
+    }
 
     if (identifier === 6 || identifier === 7) {
       this.validadeDigit(digitableLine, 10);
