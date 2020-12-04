@@ -1,6 +1,5 @@
 import 'express-async-errors';
 import express, { Request, Response, NextFunction } from 'express';
-// import cors from 'cors';
 import ValidationError from '@errors/ValidationError';
 import routes from './routes';
 
