@@ -15,3 +15,5 @@ yarn dev:server
 ```
 
 Se deu tudo certo acesse a api pelo `http://localhost:3333`.
+
+Obs. Infelizmente não consegui incluir testes unitários por conta do tempo.
